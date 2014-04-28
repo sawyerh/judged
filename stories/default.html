@@ -1,0 +1,42 @@
+{% capture content %}
+  {% for asset in assets %}
+    {% if asset.type == 'image' %}
+      <div class="story-bg" style="background-image: url('{{ asset.url }}')"></div>
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  <section class="story-info">
+    <div class="player">
+      <span class="play-button ss-icon is-loading">play</span>
+
+      {% if meta.quote %}
+        <blockquote class="story-quote">{{ meta.quote }}</blockquote>
+      {% endif %}
+    </div>
+
+    {% for asset in assets %}
+      {% if asset.type == 'audio' %}
+        <audio src="{{ asset.url }}" controls="controls" id="audio-player"></audio>
+        {% break %}
+      {% endif %}
+    {% endfor %}
+
+    {% if meta.audio_caption %}
+      <p class="audio-caption">{{ meta.audio_caption }}</p>
+    {% endif %}
+
+    <h1 class="story-title">{{ title }}</h1>
+    {% if meta.subtitle %}
+      <h2 class="story-subtitle">{{ meta.subtitle }}</h2>
+    {% endif %}
+
+    <div class="story-body">{{ body }}</div>
+  </section>
+{% endcapture %}
+
+{% capture footer_scripts %}
+  <script src="/scripts/js/min/story.js"></script>
+{% endcapture %}
+
+{% include 'layouts/default'  %}

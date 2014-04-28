@@ -1,0 +1,9 @@
+gzip_assets: off
+compress_assets: off
+
+javascripts:
+  application:
+    - scripts/js/global.js
+  story:
+    - scripts/js/plugins/mediaelement-and-player.js
+    - scripts/js/story.js
