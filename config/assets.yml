@@ -4,6 +4,8 @@ compress_assets: off
 javascripts:
   application:
     - scripts/js/global.js
+  home:
+    - scripts/js/home.js
   story:
     - scripts/js/plugins/mediaelement-and-player.js
     - scripts/js/story.js

@@ -1,0 +1,16 @@
+{% capture content %}
+  <div class="story-bg"></div>
+  <div class="page-content">
+      <h1 class="logo">{{ site.title }}</h1>
+      <div class="tagline">{{ body }}</div>
+
+      <div class="home-quote">{{ meta.quote_text }}</div>
+  </div>
+{% endcapture %}
+
+{% capture footer_scripts %}
+  <script src="/stories/stories.js"></script>
+  <script src="/scripts/js/min/home.js"></script>
+{% endcapture %}
+
+{% include 'layouts/default' %}

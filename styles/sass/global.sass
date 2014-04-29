@@ -10,6 +10,7 @@ body
   font-size: $fs_body
   margin: 0
   padding: 0
+  background: #111
 
 h1, h2, h3, h4
   +antialias
@@ -17,8 +18,56 @@ h1, h2, h3, h4
   font-weight: 500
   margin: 0
 
+.page-content
+  position: relative
+  z-index: 10
+  color: #fff
+
+.logo
+  font-family: $ff_sans
+  font-weight: bold
+  text-transform: uppercase
+  font-size: 90px
+  line-height: 1
+
 // Homepage
 //============================================================
+.page-home
+  text-align: center
+
+  .story-bg
+    opacity: 0.30
+
+  .page-content
+    +vertAlign
+    width: 100%
+
+.tagline p, .home-quote
+  +antialias
+  font-family: $ff_serif
+  font-style: italic
+  font-weight: 300
+  font-size: 30px
+  margin: 0
+
+.home-quote
+  border: 2px solid #fff
+  border-top: 0 none
+  width: 357px - 5
+  margin: auto
+  margin-top: 39px + 15px
+  position: relative
+  padding: 30px
+  font-size: 24px
+
+  &:before
+    content: ''
+    background: url('/images/quote-box-top.svg') center top repeat-x
+    position: absolute
+    top: -39px + 2
+    left: 0
+    right: 0
+    height: 39px
 
 // Stories
 //============================================================

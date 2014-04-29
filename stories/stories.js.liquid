@@ -1,0 +1,9 @@
+var storyBackgrounds = [];
+
+{% for story in site.pages['stories'].posts %}
+  {% for asset in story.assets %}
+    {% if asset.type == 'image' %}
+      storyBackgrounds.push('{{ asset.url }}');
+    {% endif %}
+  {% endfor %}
+{% endfor %}
