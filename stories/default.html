@@ -38,15 +38,15 @@
     <span class="story-toggle">+ more</span>
   </section>
 
-  {% if previous %}
-    <a href="{{ previous.url }}" class="nav-arrow nav-next">
-      <img src="/images/icon-arrow-right.svg" alt="next" />
-    </a>
-  {% endif %}
-
   {% if next %}
     <a href="{{ next.url }}" class="nav-arrow nav-prev">
       <img src="/images/icon-arrow-left.svg" alt="prev" />
+    </a>
+  {% endif %}
+
+  {% if previous %}
+    <a href="{{ previous.url }}" class="nav-arrow nav-next">
+      <img src="/images/icon-arrow-right.svg" alt="next" />
     </a>
   {% endif %}
 {% endcapture %}

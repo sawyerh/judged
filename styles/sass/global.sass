@@ -45,7 +45,14 @@ a
   z-index: 200
 
   +max-width($bp_nav_stacked)
-    position: static
+    position: relative
+    left: auto !important
+    right: auto !important
+    width: 49%
+    display: inline-block
+
+    &.nav-prev
+      text-align: right
 
   &:hover img
     opacity: 0.6
@@ -70,6 +77,8 @@ a
   text-shadow: 0 0 2px rgba(#000, 0.2)
   font-size: 12px
   color: #fff
+  right: $gutter_body
+  left: $gutter_body
 
   a:hover
     opacity: 0.6
@@ -77,9 +86,21 @@ a
 .primary-header
   position: fixed
   top: $gutter_body
-  right: $gutter_body
   z-index: 200
   font-size: 12px
+  text-align: right
+
+  +max-width($bp_header_nav_stacked)
+    position: relative
+    top: auto
+    right: auto
+    left: auto
+    text-align: left
+    margin: $gutter_body $w_nav_arrow $gutter
+
+  +max-width($bp_nav_stacked)
+    margin: $gutter_body auto
+    width: 90%
 
 .nav-link
   text-decoration: none
@@ -91,21 +112,27 @@ a
   position: fixed
   text-align: center
   bottom: 15px
-  width: 100%
   z-index: 200
-  padding: 20px 20px $gutter_body
+  padding: 20px 0 $gutter_body
+  text-align: right
 
   +max-height($bp_static_blocks)
     position: relative
     bottom: auto
+
+  +max-width($bp_nav_stacked)
+    margin: $gutter_body auto
+    width: 90%
+    right: auto
+    left: auto
 
 // Homepage
 //============================================================
 .page-stories
   text-align: center
 
-  .story-bg
-    opacity: 0.30
+  .primary-footer, .primary-header
+    text-align: center
 
   .page-content
     +vertAlign
@@ -186,6 +213,9 @@ a
   height: 100%
   z-index: 0
   opacity: 0.85
+
+  &.is-faded
+    opacity: 0.3
 
 .play-button
   +vertAlign
@@ -297,6 +327,10 @@ a
   font-size: $fs_body_small
   margin: $gutter_body 0 $w_nav_arrow $w_nav_arrow
 
+  +max-width($bp_nav_stacked)
+    margin: $gutter_body auto
+    width: 90%
+
 .story-title-wrap
   background: $bg_white_overlay
   color: $tc_dark
@@ -353,3 +387,29 @@ a
 
 // Default page template
 //============================================================
+
+.page-template
+  +antialias
+  width: 90%
+  margin: $gutter_body $gutter_body 100px
+  max-width: 600px
+  font-family: $ff_serif
+  font-size: 16px
+  line-height: 1.4
+
+  +max-width(600px)
+    margin: $gutter_body auto
+
+.page-title
+  font-family: $ff_sans
+  font-weight: bold
+  text-transform: uppercase
+  font-size: 36px
+  line-height: 1
+
++max-width(1210px)
+  .page-about, .page-credits
+    .primary-footer, .primary-header
+      position: relative
+      bottom: auto
+      text-align: left

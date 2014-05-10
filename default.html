@@ -1,9 +1,14 @@
 {% capture content %}
+  <div class="story-bg is-faded"></div>
+  <div class="page-content page-template">
+      <h1 class="page-title">{{ title }}</h1>
+      <div class="page-body">{{ body }}</div>
+  </div>
+{% endcapture %}
 
-  {% for story in site.pages['stories'].posts %}
-    <a href="{{ story.url }}">{{ story.title }}</a>
-  {% endfor %}
-
+{% capture footer_scripts %}
+  <script src="/stories/stories.js"></script>
+  <script src="/scripts/js/min/home.js"></script>
 {% endcapture %}
 
 {% include 'layouts/default' %}
