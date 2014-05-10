@@ -64,28 +64,44 @@ a
   right: 0
 
 
-// Footer
+// Header + Footer
 //============================================================
+.primary-header, .primary-footer
+  text-shadow: 0 0 2px rgba(#000, 0.2)
+  font-size: 12px
+  color: #fff
+
+  a:hover
+    opacity: 0.6
+
+.primary-header
+  position: fixed
+  top: $gutter_body
+  right: $gutter_body
+  z-index: 200
+  font-size: 12px
+
+.nav-link
+  text-decoration: none
+  font-weight: bold
+  display: inline-block
+  padding: 0 10px 10px
+
 .primary-footer
   position: fixed
-  color: #fff
-  font-size: $fs_body_small
   text-align: center
   bottom: 15px
   width: 100%
   z-index: 200
-  padding: 20px 20px 40px
+  padding: 20px 20px $gutter_body
 
   +max-height($bp_static_blocks)
     position: relative
     bottom: auto
 
-  a:hover
-    opacity: 0.6
-
 // Homepage
 //============================================================
-.page-home
+.page-stories
   text-align: center
 
   .story-bg
@@ -156,7 +172,7 @@ a
   +max-width($bp_nav_stacked)
     position: static
     display: block
-    margin-top: 40px
+    margin-top: $gutter_body
 
 // Stories
 //============================================================
@@ -169,42 +185,33 @@ a
   width: 100%
   height: 100%
   z-index: 0
-  opacity: 0.75
+  opacity: 0.85
 
 .play-button
-  font-size: 40px
-  height: $w_play_button
-  width: $w_play_button
-  position: absolute
+  +vertAlign
+  font-size: 90px
+  height: 90px
   left: 0
-  top: 0
   display: inline-block
-  line-height: 101px
   border-radius: 50%
-  background-color: #000
   color: #fff
-  text-align: center
-  padding-left: 8px
   cursor: pointer
-  transition: background 250ms ease
+  text-shadow: 0 0 3px rgba(#000, 0.1)
 
   &.is-loading
     color: transparent
     background: url('/images/loader.gif') center center no-repeat #000
-
-  &.is-playing
-    padding-left: 0
-    font-size: 32px
+    height: 90px
+    width: 90px
 
   &:hover
-    background-color: rgba(#000, 0.65)
+    opacity: 0.85
 
 .player
   position: relative
-  min-height: $w_play_button
   left: 0
   padding-left: $w_play_button + $gutter_small
-  padding-bottom: $h_quote_triangle
+  margin-bottom: 39px
 
 .audio-caption
   color: #fff
@@ -212,19 +219,28 @@ a
   font-size: 11px
   display: block
 
-.mejs-time-rail
-  height: 3px
+.mejs-time-rail,
+.mejs-container .mejs-controls,
+.mejs-time-total
+  height: 5px
+
+.mejs-container .mejs-controls
+  top: 0
+  bottom: auto
+
+.mejs-controls .mejs-time-rail span
+  cursor: auto
+  top: 1px
 
 .mejs-time-total
-  height: 3px
   background: #fff
 
 .mejs-time-current
   background: #000
   position: absolute
-  left: 0
-  top: 0
-  height: 100%
+  left: 1px
+  top: 1px
+  bottom: 1px
 
 .mejs-container
   width: 100% !important
@@ -232,54 +248,101 @@ a
 .mejs-controls .mejs-time-rail .mejs-time-float
   background: #fff
   border: 0 none
+  display: none !important
 
 .mejs-controls .mejs-time-rail .mejs-time-float-corner
   border-color: #fff rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0)
 
 .mejs-controls .mejs-time-rail .mejs-time-float-current
-  margin: 3px 2px
+  margin: 5px 2px
 
 .story-quote
   margin: 0
   padding: 15px 20px
-  background: #fff
-  // color: #fff
+  background: rgba(#000, 0.6)
+  border: 2px solid #fff
+  border-bottom: 0 none
+  color: #fff
   font-family: $ff_serif
-  font-size: 14px
+  font-size: 20px
   font-weight: 300
   font-style: italic
-  line-height: 1.5
+  line-height: 1.35
   position: relative
 
-  .triangle
-    +triangle($h_quote_triangle, 1)
-    border-color: #fff
-    bottom: -$h_quote_triangle
-    right: $h_quote_triangle
+  p
+    margin: 0
+
+    &:before
+      content: '“'
+
+    &:after
+      content: '”'
+
+  &:after
+    content: ''
+    background: url('/images/quote-box-bottom.svg') right top repeat-x
+    background-size: 385px 39px
     position: absolute
+    bottom: -39px + 4
+    left: -2px
+    right: -2px
+    height: 39px
 
 
 .story-info
   position: relative
-  z-index: 10
-  padding: $gutter
-  max-width: 400px
+  z-index: 300
+  max-width: 390px
+  font-size: $fs_body_small
+  margin: $gutter_body 0 $w_nav_arrow $w_nav_arrow
+
+.story-title-wrap
+  background: $bg_white_overlay
+  color: $tc_dark
+  padding: $gutter_small
+  margin: 6px 0 5px
 
 .story-title
-  font-size: 36px
+  font-size: 18px
   letter-spacing: -1px
-  margin-top: $gutter
+  margin: 0
+  display: inline
 
 .story-subtitle
   font-size: $fs_body
   font-weight: 300
   font-style: italic
+  display: inline-block
+  margin-left: 4px
+
+.story-toggle
+  transition: all 250ms ease
+  display: inline-block
+  background: $bg_white_overlay
+  color: $tc_dark
+  padding: 4px 6px
+  font-size: $fs_body_small
+  font-weight: bold
+  line-height: 1
+  cursor: pointer
+
+  &:hover
+    background: #000
+    color: #fff
 
 .story-body
   line-height: 1.5
-  background: #fff
+  background: $bg_white_overlay
   padding: $gutter_small
-  margin-top: $gutter
+  margin-bottom: 5px
+  color: $tc_dark
+
+  &.is-collapsed
+    display: none
+
+  a
+    color: $tc_dark
 
   p
     margin: 0 0 1em
