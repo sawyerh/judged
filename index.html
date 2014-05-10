@@ -6,6 +6,11 @@
 
       <div class="home-quote">{{ meta.quote_text }}</div>
   </div>
+  <a href="{{ site.pages['stories'].posts.first.url }}" class="home-link-mask">
+    <span class="nav-arrow nav-next">
+      <img src="/images/icon-arrow-right.svg" alt="next" />
+    </span>
+  </a>
 {% endcapture %}
 
 {% capture footer_scripts %}

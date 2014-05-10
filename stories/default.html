@@ -11,7 +11,7 @@
       <span class="play-button ss-icon is-loading">play</span>
 
       {% if meta.quote %}
-        <blockquote class="story-quote">{{ meta.quote }}</blockquote>
+        <blockquote class="story-quote"{% if meta.quote_bg || meta.quote_color %} style="background-color: {{ meta.quote_bg }}; color: {{ meta.quote_color }}"{% endif %}>{{ meta.quote }}<span class="triangle"{% if meta.quote_bg %} style="border-color: {{ meta.quote_bg }};"{% endif %}></span></blockquote>
       {% endif %}
     </div>
 
@@ -26,13 +26,19 @@
       <p class="audio-caption">{{ meta.audio_caption }}</p>
     {% endif %}
 
-    <h1 class="story-title">{{ title }}</h1>
+    <h1 class="story-title"{% if meta.title_color %} style="color: {{ meta.title_color }}"{% endif %}>{{ title }}</h1>
     {% if meta.subtitle %}
-      <h2 class="story-subtitle">{{ meta.subtitle }}</h2>
+      <h2 class="story-subtitle"{% if meta.title_color %} style="color: {{ meta.title_color }}"{% endif %}>{{ meta.subtitle }}</h2>
     {% endif %}
 
-    <div class="story-body">{{ body }}</div>
+    <div class="story-body"{% if meta.story_bg || meta.story_color %} style="background-color: {{ meta.story_bg }}; color: {{ meta.story_color }}"{% endif %}>{{ body }}</div>
   </section>
+
+  {% if previous %}
+    <a href="{{ previous.url }}" class="nav-arrow nav-next">
+      <img src="/images/icon-arrow-right.svg" alt="next" />
+    </a>
+  {% endif %}
 {% endcapture %}
 
 {% capture footer_scripts %}
