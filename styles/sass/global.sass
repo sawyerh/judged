@@ -33,6 +33,9 @@ a
   font-size: 90px
   line-height: 1
 
+  +max-width($bp_home_type_downsize)
+    font-size: 60px
+
 .nav-arrow
   position: fixed
   top: 0
@@ -40,6 +43,9 @@ a
   padding: 0 30px
   cursor: pointer
   z-index: 200
+
+  +max-width($bp_nav_stacked)
+    position: static
 
   &:hover img
     opacity: 0.6
@@ -49,6 +55,10 @@ a
     width: 17px
     left: 50%
     margin-left: negativeHalf(17px)
+
+    +max-width($bp_nav_stacked)
+      +transform(none)
+      position: static
 
 .nav-next
   right: 0
@@ -64,6 +74,11 @@ a
   bottom: 15px
   width: 100%
   z-index: 200
+  padding: 20px 20px 40px
+
+  +max-height($bp_static_blocks)
+    position: relative
+    bottom: auto
 
   a:hover
     opacity: 0.6
@@ -81,6 +96,14 @@ a
     width: 100%
     padding: 0 100px
 
+    +max-width($bp_nav_stacked)
+      padding: 30px 20px
+
+    +max-height($bp_static_blocks)
+      +transform(none)
+      position: relative
+      top: auto
+
 .tagline p, .home-quote
   +antialias
   font-family: $ff_serif
@@ -89,6 +112,9 @@ a
   font-size: 30px
   margin: 0
 
+  +max-width($bp_home_type_downsize)
+    font-size: 20px
+
 .tagline
   max-width: 700px
   margin: auto
@@ -96,16 +122,22 @@ a
 .home-quote
   border: 2px solid #fff
   border-top: 0 none
-  width: 357px - 5
+  max-width: 357px - 5
+  width: 100%
   margin: auto
   margin-top: 39px + 15px
   position: relative
   padding: 30px
   font-size: 24px
 
+  +max-width($bp_home_type_downsize)
+    font-size: 18px
+    padding: 20px
+
   &:before
     content: ''
-    background: url('/images/quote-box-top.svg') center top repeat-x
+    background: url('/images/quote-box-top.svg') left top repeat-x
+    background-size: 357px 39px
     position: absolute
     top: -39px + 2
     left: 0
@@ -120,6 +152,11 @@ a
   height: 100%
   z-index: 100
   cursor: pointer
+
+  +max-width($bp_nav_stacked)
+    position: static
+    display: block
+    margin-top: 40px
 
 // Stories
 //============================================================
