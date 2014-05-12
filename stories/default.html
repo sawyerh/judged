@@ -1,7 +1,7 @@
 {% capture content %}
   {% for asset in assets %}
     {% if asset.type == 'image' %}
-      <div class="story-bg" data-bg="{{ asset.url }}"></div>
+      <div class="story-bg" style="background-image: url('{{ asset.url }}');"></div>
       {% break %}
     {% endif %}
   {% endfor %}
@@ -46,6 +46,10 @@
 
   {% if previous %}
     <a href="{{ previous.url }}" class="nav-arrow nav-next">
+      <img src="/images/icon-arrow-right.svg" alt="next" />
+    </a>
+  {% else %}
+    <a href="{{ site.pages['stories'].posts.first.url }}" class="nav-arrow nav-next">
       <img src="/images/icon-arrow-right.svg" alt="next" />
     </a>
   {% endif %}

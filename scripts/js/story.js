@@ -44,12 +44,6 @@
         return initPlayer(mediaElement);
       }
     });
-    $(window).on('load', function() {
-      var storyBg, url;
-      storyBg = document.querySelector('.story-bg');
-      url = storyBg.getAttribute('data-bg');
-      return storyBg.style.backgroundImage = "url('" + url + "')";
-    });
     return $(storyToggle).on('click', function() {
       return toggleStoryBody();
     });

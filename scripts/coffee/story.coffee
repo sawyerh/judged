@@ -35,10 +35,5 @@ $ ->
       initPlayer(mediaElement)
   })
 
-  $(window).on 'load', ->
-    storyBg = document.querySelector('.story-bg')
-    url = storyBg.getAttribute('data-bg')
-    storyBg.style.backgroundImage = "url('#{url}')"
-
   $(storyToggle).on 'click', ->
     toggleStoryBody()

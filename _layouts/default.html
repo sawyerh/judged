@@ -5,7 +5,7 @@
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta name="generator" content="Siteleaf, http://siteleaf.com" />
   <meta name="google-site-verification" content="DRhq1P1N1jJwJ46rBx7BtMl7ONwyfBaR2u4h8ds6jwQ" />
-  <title>{{site.title}} | {{title}}</title>
+  <title>{{site.title}} | {% if current.url == '/' %}Stories of ex-convicts who started a business.{% else %}{{title}}{% endif %}</title>
   <link rel="canonical" href="{{permalink}}" />
   <link rel="alternate" type="application/rss+xml" href="{{site.feed_url}}" />
   <link rel="stylesheet" type="text/css" href="/styles/css/global.css" />
@@ -19,12 +19,16 @@
     {% for page in site.pages %}
       <a href="{{ page.url }}" class="nav-link">{{ page.title }}</a>
     {% endfor %}
+    <a href="{{ site.pages['stories'].posts.first.url }}" class="nav-link">stories</a>
   </header>
 
   {{ content }}
-  <footer class="primary-footer">
-    By <a href="http://www.basberkhout.nl" target="_blank">Bas Berkhout</a> and <a href="http://subsoda.nl/" target="_blank">Hanne Ghijsen</a>. Powered by <a href="http://www.siteleaf.com" target="_blank">Siteleaf</a>.
-  </footer>
+
+  {% if current.url == '/' %}
+    <footer class="primary-footer">
+      By <a href="http://www.basberkhout.nl" target="_blank">Bas Berkhout</a> and <a href="http://subsoda.nl/" target="_blank">Hanne Ghijsen</a>. Powered by <a href="http://www.siteleaf.com" target="_blank">Siteleaf</a>.
+    </footer>
+  {% endif %}
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="/scripts/js/min/application.js"></script>
